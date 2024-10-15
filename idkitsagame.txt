@@ -1,0 +1,57 @@
+def get_feedback(secret, guess):
+    bulls = 0
+    cows = 0
+
+    for i in range(3):
+        if guess[i] == secret[i]:
+            bulls += 1
+        elif guess[i] in secret:
+            cows += 1
+
+    return bulls, cows
+
+
+def play_game():
+    # Player 1 enters a 3-digit number
+    secret_number = input("Player 1, enter a 3-digit number (unique digits): ")
+
+    while len(secret_number) != 3 or not secret_number.isdigit() or len(set(secret_number)) != 3:
+        print("Invalid input. Please enter a 3-digit number with unique digits.")
+        secret_number = input("Player 1, enter a 3-digit number (unique digits): ")
+
+    attempts = 10
+    print("\nPlayer 2, you have 10 attempts to guess the number!")
+
+    for attempt in range(attempts):
+        guess = input(f"Attempt {attempt + 1}/{attempts}: Enter your guess (3 unique digits): ")
+
+        if len(guess) != 3 or not guess.isdigit() or len(set(guess)) != 3:
+            print("Invalid input. Please enter three unique digits.")
+            continue
+
+        bulls, cows = get_feedback(secret_number, guess)
+
+        if bulls == 3:
+            print("You have done it!")
+            break
+        else:
+            print(f"{bulls} b, {cows} c")
+
+    if bulls != 3:
+        print("Aww, you lost player! Nice try! The correct number was:", secret_number)
+
+
+def main():
+    while True:
+        play_game()
+
+        play_again = input("\nDo you want to play again? (yes/no): ").strip().lower()
+        if play_again != 'yes':
+            confirm_quit = input("Are you sure you want to quit? (yes/no): ").strip().lower()
+            if confirm_quit == 'yes':
+                print("Goodbye! Thanks for playing.")
+                break
+
+
+if __name__ == "__main__":
+    main()
