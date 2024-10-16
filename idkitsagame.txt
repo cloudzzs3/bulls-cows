@@ -1,3 +1,11 @@
+#I want a code where player 1 chooses a 3 digit number and player 2 has 10 tries to guess it if player 2 guesses the right
+#number but its in the wrong place its a cow or a "c" and if they get the number in the right place and its right its a bull
+#or a "b" and if player 2 guesses the number in under 10 tries it says "You have done it!" and if they can not guess it in
+#at least 10 tries it will say "aww you lost player nice try!" and it will ask do you want to play again? player 2 can either
+#say yes or no if they say yes the game will restart and a random 3 digit will appear on screen and the game will repeat until
+#player 2 says "no" then it will say "Are you sure you want to quit?" if the player says "yes" then the game will quit and it will say
+#"Goodbye thanks for playing" if the player says no the game will restart with a random number again.
+
 def get_feedback(secret, guess):
     bulls = 0
     cows = 0
